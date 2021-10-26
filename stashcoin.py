@@ -96,7 +96,8 @@ app = Flask(__name__)
 blockchain = Blockchain()
 
 # Mining a new block
-app.route('/mine_block', methods = ['GET'])
+@app.route('/mine_block', methods=['GET'])
 def main_block():
     previous_block = blockchain.print_previous_block()
     previous_proof = previous_block['proof']
+    proof = blockchain.proof_of_work(previous_proof)
